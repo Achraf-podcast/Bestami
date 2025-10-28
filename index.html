@@ -44,94 +44,82 @@
                 Add New Transaction
             </button>
         </div>
+        
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="hidden md:grid grid-cols-6 bg-gray-50 text-gray-800 uppercase text-xs font-semibold px-5 py-3">
+                <div>Date</div>
+                <div class="px-2">Description</div>
+                <div class="px-3">Category</div>
+                <div class="px-6">Type</div>
+                <div class="px-8">Amount</div>
+                <div class="px-8">Actions</div>
+            </div>
 
-
-        <div class="bg-white rounded-lg shadow-sm">
-            <table class="min-w-full border-collapse">
-                <thead class="bg-gray-50 text-gray-800 uppercase text-xs">
-                    <tr>
-                        <th class="px-5 py-3 text-left font-semibold">Date</th>
-                        <th class="px-5 py-3 text-left font-semibold">Description</th>
-                        <th class="px-5 py-3 text-left font-semibold">Category</th>
-                        <th class="px-5 py-3 text-left font-semibold">Type</th>
-                        <th class="px-5 py-3 text-left font-semibold">Amount</th>
-                        <th class="px-5 py-3 text-left font-semibold">Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="text-sm text-gray-700">
-                    <tr class="bg-green-100 border-t border-gray-200">
-                        <td class="px-5 py-3">Oct 26, 2023</td>
-                        <td class="px-5 py-3">Monthly Salary</td>
-                        <td class="px-5 py-3">Income</td>
-                        <td class="px-5 py-3">
-                            <span class="px-2 py-1 rounded-full text-xs font-semibold text-green-800 bg-green-200">
-                                Income
-                            </span>
-                        </td>
-                        <td class="px-5 py-3 text-right font-semibold text-green-600">+$3,500.00</td>
-                        <td class="px-5 py-3 flex gap-3">
-                            <button href="#" class="text-blue-600 font-semibold">edit</button>
-                            <button href="#" class="text-red-600 font-semibold">delete</button>
-                        </td>
-                    </tr>
-
-                    <tr class="bg-red-100 border-t border-gray-200">
-                        <td class="px-5 py-3">Oct 25, 2023</td>
-                        <td class="px-5 py-3">Groceries from SuperMart</td>
-                        <td class="px-5 py-3">Food & Drink</td>
-                        <td class="px-5 py-3">
-                            <span class="px-2 py-1 rounded-full text-xs font-semibold text-red-800 bg-red-200">
-                                Expense
-                            </span>
-                        </td>
-                        <td class="px-5 py-3 text-right font-semibold text-red-600">-$85.50</td>
-                        <td class="px-5 py-3 flex gap-3">
-                            <button href="#" class="text-blue-600 font-semibold">edit</button>
-                            <button href="#" class="text-red-600 font-semibold">delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-green-200 text-sm">
+                <div class="px-5 py-3 flex justify-between md:block">
+                    <span class="font-semibold md:hidden text-gray-500">Date:</span>
+                    <span>Oct 26, 2023</span>
+                </div>
+                <div class="px-5 py-3 flex justify-between md:block">
+                    <span class="font-semibold md:hidden text-gray-500">Description:</span>
+                    <span>Monthly Salary</span>
+                </div>
+                <div class="px-5 py-3 flex justify-between md:block">
+                    <span class="font-semibold md:hidden text-gray-500">Category:</span>
+                    <span>Income</span>
+                </div>
+                <div class="px-5 py-3 flex justify-between md:block">
+                    <span class="font-semibold md:hidden text-gray-500">Type:</span>
+                    <span class="px-2 py-1 rounded-full text-xs font-semibold text-green-800 bg-green-200">
+                        Income
+                    </span>
+                </div>
+                <div class="px-5 py-3 flex justify-between md:block">
+                    <span class="font-semibold md:hidden text-gray-500">Amount:</span>
+                    <span class="text-green-600 font-semibold">+$3,500.00</span>
+                </div>
+                <div class="px-5 py-3 flex justify-between md:block gap-3">
+                    <span class="font-semibold md:hidden text-gray-500">Actions:</span>
+                    <div class="flex gap-3">
+                        <button class="text-blue-600 font-semibold">edit</button>
+                        <button class="text-red-600 font-semibold">delete</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-red-200 text-sm">
+                <div class="px-5 py-3 flex justify-between md:block">
+                    <span class="font-semibold md:hidden text-gray-500">Date:</span>
+                    <span>Oct 25, 2023</span>
+                </div>
+                <div class="px-5 py-3 flex justify-between md:block">
+                    <span class="font-semibold md:hidden text-gray-500">Description:</span>
+                    <span>Groceries from SuperMart</span>
+                </div>
+                <div class="px-5 py-3 flex justify-between md:block">
+                    <span class="font-semibold md:hidden text-gray-500">Category:</span>
+                    <span>Food & Drink</span>
+                </div>
+                <div class="px-5 py-3 flex justify-between md:block">
+                    <span class="font-semibold md:hidden text-gray-500">Type:</span>
+                    <span class="px-2 py-1 rounded-full text-xs font-semibold text-red-800 bg-red-200">
+                        Expense
+                    </span>
+                </div>
+                <div class="px-5 py-3 flex justify-between md:block">
+                    <span class="font-semibold md:hidden text-gray-500">Amount:</span>
+                    <span class="text-red-600 font-semibold">-$85.50</span>
+                </div>
+                <div class="px-5 py-3 flex justify-between md:block gap-3">
+                    <span class="font-semibold md:hidden text-gray-500">Actions:</span>
+                    <div class="flex gap-3">
+                        <button class="text-blue-600 font-semibold">edit</button>
+                        <button class="text-red-600 font-semibold">delete</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!--div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Category</th>
-                        <th>Type</th>
-                        <th>Amount</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="tr-income">
-                        <td>Oct 26, 2023</td>
-                        <td>Monthly Salary</td>
-                        <td>Income</td>
-                        <td><span class="badge income">Income</span></td>
-                        <td class="amount income">+$3,500.00</td>
-                        <td class="actions">
-                            <a href="#" class="edit">edit</a>
-                            <a href="#" class="delete">delete</a>
-                        </td>
-                    </tr>
-                    <tr class="tr-expense">
-                        <td>Oct 25, 2023</td>
-                        <td>Groceries from SuperMart</td>
-                        <td>Food & Drink</td>
-                        <td><span class="badge expense">Expense</span></td>
-                        <td class="amount expense">-$85.50</td>
-                        <td class="actions">
-                            <a href="#" class="edit">edit</a>
-                            <a href="#" class="delete">delete</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div-->
     </main>
 
 </body>
