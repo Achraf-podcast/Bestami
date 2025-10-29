@@ -16,7 +16,7 @@ function CloseFormulaire(){
 function income(){
     type = true;
     expenseBtn.classList.remove("bg-white");
-    expenseBtn.classList.remove("text-green-600");
+    expenseBtn.classList.remove("text-red-600");
     expenseBtn.classList.remove("transition-all");
     incomeBtn.classList.add("bg-white");
     incomeBtn.classList.add("text-green-600");
@@ -32,9 +32,15 @@ function expense(){
     expenseBtn.classList.add("transition-all");
 }
 
+function validatingData(amount, date, category, description){
+    console.log(amount, date, category, description);
+}
 function getData(){
     // prendre tous les inputs
-    const inputs = document.getElementsByClassName("form-input");
+    let inputs = document.getElementsByClassName("form-input");
+    // Valider les données
+    validatingData(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value);
+
     // Inserer tous les donées des inputs à une nouveau carte
     const card = {amount: inputs[0].value, date: inputs[1].value, category: inputs[2].value, description: inputs[3].value, type: type};
     // Ajouter la carte à notre tableau des autres cartes
