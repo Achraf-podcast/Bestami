@@ -146,22 +146,22 @@
                                 </div>
                             </div>
                             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                                <label class="flex flex-col gap-2">
+                                <div class="flex flex-col gap-2">
                                     <p class="text-slate-800 text-slate-200 text-sm font-medium leading-normal">
                                         Amount</p>
                                     <div class="relative">
                                         <input class="form-input w-full h-12 text-base" placeholder="$0.00" type="text" value="">
                                     </div>
-                                </label>
-                                <label class="flex flex-col gap-2">
+                                </div>
+                                <div class="flex flex-col gap-2">
                                     <p class="text-slate-800 text-slate-200 text-sm font-medium leading-normal">
                                         Date</p>
                                     <div class="relative">
                                         <input class="form-input w-full h-12 text-base" type="date" value="2024-07-26">
                                     </div>
-                                </label>
+                                </div>
                             </div>
-                            <label class="flex flex-col gap-2">
+                            <div class="flex flex-col gap-2">
                                 <p class="text-slate-800 text-slate-200 text-sm font-medium leading-normal">
                                     Category</p>
                                 <select class="form-input h-12 text-base">
@@ -172,15 +172,15 @@
                                     <option>Salary</option>
                                     <option>Entertainment</option>
                                 </select>
-                            </label>
-                            <label class="flex flex-col gap-2">
+                            </div>
+                            <div class="flex flex-col gap-2">
                                 <p class="text-slate-800 text-slate-200 text-sm font-medium leading-normal"> Description</p>
                                 <input class="form-input h-12 text-base" placeholder="e.g., Weekly grocery run" value="">
-                            </label>
+                            </div>
                         </div>
                         <div class="flex flex-col-reverse gap-3 pt-4 sm:flex-row sm:justify-end">
                             <button class="flex h-12 items-center justify-center rounded-lg border border-slate-200 border-slate-700 px-6 text-sm font-semibold text-slate-700 text-slate-300 close-formulaire" type="button">Cancel</button>
-                            <button class="flex h-12 items-center justify-center gap-2 rounded-lg bg-blue-500 px-6 text-sm font-semibold text-white shadow-sm" type="button">
+                            <button class="flex h-12 items-center justify-center gap-2 rounded-lg bg-blue-500 px-6 text-sm font-semibold text-white shadow-sm" type="button" onclick="getData()">
                                 <span class="material-symbols-outlined text-xl" data-icon="save">save</span>
                                 <span>Save Transaction</span>
                             </button>

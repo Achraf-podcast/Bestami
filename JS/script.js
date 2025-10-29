@@ -1,3 +1,6 @@
+// Declarer les variables
+var type = true;
+
 // Afficher le formulaire
 function displayTransactionFormulaire(){
     let formulaire = document.getElementsByClassName("formulaire");
@@ -8,7 +11,9 @@ function CloseFormulaire(){
     let formulaire = document.getElementsByClassName("formulaire");
     formulaire[0].style.display = "none";
 }
+
 function income(){
+    type = true;
     expenseBtn.classList.remove("bg-white");
     expenseBtn.classList.remove("text-green-600");
     expenseBtn.classList.remove("transition-all");
@@ -17,6 +22,7 @@ function income(){
     incomeBtn.classList.add("transition-all");
 }
 function expense(){
+    type = false;
     incomeBtn.classList.remove("bg-white");
     incomeBtn.classList.remove("text-green-600");
     incomeBtn.classList.remove("transition-all");
@@ -25,16 +31,23 @@ function expense(){
     expenseBtn.classList.add("transition-all");
 }
 
-// Declare buttons
+function getData(){
+    console.log("hello world");
+}
+
+// Declarer les buttons
 const newTransBtn = document.getElementById("addNewTransaction");
 const closeFormulaireBtns = document.getElementsByClassName("close-formulaire")
 const incomeBtn = document.getElementById("income-btn")
 const expenseBtn = document.getElementById("expense-btn")
 
-// make buttons functionel
+// Rendre les buttons fonctionelles
 newTransBtn.addEventListener("click", displayTransactionFormulaire);
 for(let i=0; i<closeFormulaireBtns.length; i++){
     closeFormulaireBtns[i].addEventListener("click", CloseFormulaire);
 }
 incomeBtn.addEventListener("click", income);
 expenseBtn.addEventListener("click", expense);
+
+// Rendre le type à Income par défaut
+income();
