@@ -32,7 +32,11 @@ function expense(){
 }
 
 function getData(){
-    console.log("hello world");
+    const inputs = document.getElementsByClassName("form-input");
+    for(let i=0; i<inputs.length; i++){
+        inputs[i].value = "";
+    }
+    
 }
 
 // Declarer les buttons
