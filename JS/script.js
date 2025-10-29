@@ -1,5 +1,6 @@
 // Declarer les variables
 var type = true;
+var cards = []
 
 // Afficher le formulaire
 function displayTransactionFormulaire(){
@@ -32,11 +33,16 @@ function expense(){
 }
 
 function getData(){
+    // prendre tous les inputs
     const inputs = document.getElementsByClassName("form-input");
+    // Inserer tous les donées des inputs à une nouveau carte
+    const card = {amount: inputs[0].value, date: inputs[1].value, category: inputs[2].value, description: inputs[3].value, type: type};
+    // Ajouter la carte à notre tableau des autres cartes
+    cards[cards.length] = card;
+
     for(let i=0; i<inputs.length; i++){
         inputs[i].value = "";
     }
-    
 }
 
 // Declarer les buttons
