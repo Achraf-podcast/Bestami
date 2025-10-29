@@ -44,7 +44,7 @@
                 Add New Transaction
             </button>
         </div>
-        
+
         <div class="bg-white rounded-lg shadow-sm overflow-hidden">
             <div class="hidden md:grid grid-cols-6 bg-gray-50 text-gray-800 uppercase text-xs font-semibold px-5 py-3">
                 <div>Date</div>
@@ -86,7 +86,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-red-200 text-sm">
                 <div class="px-5 py-3 flex justify-between md:block">
                     <span class="font-semibold md:hidden text-gray-500">Date:</span>
@@ -120,8 +120,100 @@
             </div>
         </div>
 
-    </main>
+        <div class="relative flex min-h-screen w-full flex-col items-center justify-center p-4 sm:p-6">
+            <div class="w-full max-w-2xl">
+                <div class="relative rounded-xl border border-slate-200/80 border-slate-800 bg-white bg-slate-900 shadow-lg">
+                    <button class="absolute top-4 right-4 text-slate-500 text-slate-400 hover:text-slate-800 hover:text-slate-200 transition-colors" type="button">
+                        <span class="material-symbols-outlined" data-icon="close">close</span>
+                    </button>
+                    <div class="flex flex-col gap-6 p-6 sm:p-10">
+                        <div class="flex flex-col gap-2">
+                            <h1 class="text-3xl font-bold text-slate-900 text-black tracking-tight">New Transaction</h1>
+                            <p class="text-slate-500 text-slate-400 text-sm">Enter the details below to add a new transaction.</p>
+                        </div>
+                        <div class="flex flex-col gap-6">
+                            <div>
+                                <h2
+                                    class="text-slate-800 text-slate-200 text-base font-semibold leading-tight tracking-[-0.015em] pb-3">
+                                    Transaction Type</h2>
+                                <div
+                                    class="flex h-12 flex-1 items-center justify-center rounded-lg bg-slate-100 bg-slate-800/50 p-1">
+                                    <label
+                                        class="flex cursor-pointer h-full grow items-center justify-center gap-2 overflow-hidden rounded-md px-2 has-[:checked]:bg-white has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm has-[:checked]:text-green-600 has-[:checked]:text-green-400 text-slate-500 text-slate-400 text-sm font-medium transition-all">
+                                        <span class="material-symbols-outlined text-xl">add</span>
+                                        <span class="truncate">Income</span>
+                                        <input class="sr-only" name="transaction-type" type="radio" value="Income">
+                                    </label>
+                                    <label
+                                        class="flex cursor-pointer h-full grow items-center justify-center gap-2 overflow-hidden rounded-md px-2 has-[:checked]:bg-white has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm has-[:checked]:text-red-500 has-[:checked]:text-red-400 text-slate-500 text-slate-400 text-sm font-medium transition-all">
+                                        <span class="material-symbols-outlined text-xl">remove</span>
+                                        <span class="truncate">Expense</span>
+                                        <input checked="" class="sr-only" name="transaction-type" type="radio"
+                                            value="Expense">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                                <label class="flex flex-col gap-2">
+                                    <p class="text-slate-800 text-slate-200 text-sm font-medium leading-normal">
+                                        Amount</p>
+                                    <div class="relative">
+                                        <div
+                                            class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                            <span class="text-slate-500 text-slate-400 sm:text-sm">$</span>
+                                        </div>
+                                        <input class="form-input h-12 pl-7 pr-3 text-base" placeholder="0.00" type="text" value="">
+                                    </div>
+                                </label>
+                                <label class="flex flex-col gap-2">
+                                    <p class="text-slate-800 text-slate-200 text-sm font-medium leading-normal">
+                                        Date</p>
+                                    <div class="relative">
+                                        <input class="form-input h-12 pr-10 text-base" type="date" value="2024-07-26">
+                                        <div
+                                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                                            <span
+                                                class="material-symbols-outlined text-slate-500 text-slate-400 text-xl"
+                                                data-icon="calendar_today">calendar_today</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <label class="flex flex-col gap-2">
+                                <p class="text-slate-800 text-slate-200 text-sm font-medium leading-normal">
+                                    Category</p>
+                                <select class="form-input h-12 text-base">
+                                    <option>Select a category</option>
+                                    <option>Groceries</option>
+                                    <option>Utilities</option>
+                                    <option>Rent</option>
+                                    <option>Salary</option>
+                                    <option>Entertainment</option>
+                                </select>
+                            </label>
+                            <label class="flex flex-col gap-2">
+                                <p class="text-slate-800 text-slate-200 text-sm font-medium leading-normal"> Description</p>
+                                <input class="form-input h-12 text-base" placeholder="e.g., Weekly grocery run" value="">
+                            </label>
+                        </div>
+                        <div class="flex flex-col-reverse gap-3 pt-4 sm:flex-row sm:justify-end">
+                            <button
+                                class="flex h-12 items-center justify-center rounded-lg border border-slate-200 border-slate-700 px-6 text-sm font-semibold text-slate-700 text-slate-300 hover:bg-slate-50 hover:bg-slate-800/50 transition-colors"
+                                type="button">Cancel</button>
+                            <button
+                                class="flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-white shadow-sm hover:bg-primary/90 transition-colors"
+                                type="button">
+                                <span class="material-symbols-outlined text-xl" data-icon="save">save</span>
+                                <span>Save Transaction</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    </main>
+    <script src="JS/script.js"></script>
 </body>
 
 </html>
