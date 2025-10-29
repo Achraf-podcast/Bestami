@@ -135,19 +135,14 @@
                             <div>
                                 <h2 class="text-slate-800 text-slate-200 text-base font-semibold leading-tight tracking-[-0.015em] pb-3">Transaction Type</h2>
                                 <div class="flex h-12 flex-1 items-center justify-center rounded-lg bg-slate-100 p-1">
-                                    <label
-                                        class="flex cursor-pointer h-full grow items-center justify-center gap-2 overflow-hidden rounded-md px-2 has-[:checked]:bg-white has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm has-[:checked]:text-green-600 has-[:checked]:text-green-400 text-slate-500 text-slate-400 text-sm font-medium transition-all">
+                                    <button class="flex cursor-pointer h-full grow items-center justify-center gap-2 text-gray-500" id="income-btn">
                                         <span class="material-symbols-outlined text-xl">add</span>
                                         <span class="truncate">Income</span>
-                                        <input class="sr-only" name="transaction-type" type="radio" value="Income">
-                                    </label>
-                                    <label
-                                        class="flex cursor-pointer h-full grow items-center justify-center gap-2 overflow-hidden rounded-md px-2 has-[:checked]:bg-white has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm has-[:checked]:text-red-500 has-[:checked]:text-red-400 text-slate-500 text-slate-400 text-sm font-medium transition-all">
+                                    </button>
+                                    <button class="flex cursor-pointer h-full grow items-center justify-center gap-2 text-gray-500" id="expense-btn">
                                         <span class="material-symbols-outlined text-xl">remove</span>
                                         <span class="truncate">Expense</span>
-                                        <input checked="" class="sr-only" name="transaction-type" type="radio"
-                                            value="Expense">
-                                    </label>
+                                    </button>
                                 </div>
                             </div>
                             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
