@@ -32,14 +32,25 @@ function expense(){
     expenseBtn.classList.add("transition-all");
 }
 
-function validatingData(amount, date, category, description){
-    console.log(amount, date, category, description);
+function split(date){
+    let year = parseInt(date[0]+date[1]+date[2]+date[3]);
+    let month = parseInt(date[5]+date[6]);
+    let day = parseInt(date[8]+date[9]);
+
+    return [year, month, day];
+}
+function validatingData(amount, date, category){
+    let validated = false;
+    let splitedDate = split(date);
+    
+    console.log(splitedDate);
+    
 }
 function getData(){
     // prendre tous les inputs
     let inputs = document.getElementsByClassName("form-input");
     // Valider les données
-    validatingData(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value);
+    validatingData(inputs[0].value, inputs[1].value, inputs[2].value);
 
     // Inserer tous les donées des inputs à une nouveau carte
     const card = {amount: inputs[0].value, date: inputs[1].value, category: inputs[2].value, description: inputs[3].value, type: type};
@@ -53,9 +64,10 @@ function getData(){
 
 // Declarer les buttons
 const newTransBtn = document.getElementById("addNewTransaction");
-const closeFormulaireBtns = document.getElementsByClassName("close-formulaire")
-const incomeBtn = document.getElementById("income-btn")
-const expenseBtn = document.getElementById("expense-btn")
+const closeFormulaireBtns = document.getElementsByClassName("close-formulaire");
+const incomeBtn = document.getElementById("income-btn");
+const expenseBtn = document.getElementById("expense-btn");
+const submitBtn = document.getElementById("submit");
 
 // Rendre les buttons fonctionelles
 newTransBtn.addEventListener("click", displayTransactionFormulaire);
@@ -64,6 +76,7 @@ for(let i=0; i<closeFormulaireBtns.length; i++){
 }
 incomeBtn.addEventListener("click", income);
 expenseBtn.addEventListener("click", expense);
+submitBtn.addEventListener("click", getData);
 
 // Rendre le type à Income par défaut
 income();
