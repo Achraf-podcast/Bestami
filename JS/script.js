@@ -40,8 +40,19 @@ function split(date){
     return [year, month, day];
 }
 function validatingData(amount, date, category){
-    let validated = false;
     let splitedDate = split(date);
+    let updatedAmount;
+    
+    // Valider Amount
+    if(amount == ""){
+        return false;
+    }else{
+        if(type){
+            updatedAmount = amount>0 ? amount : -amount;
+        }else{
+            updatedAmount = amount<0 ? amount : -amount;
+        }
+    }
     
     // Valider La Date
     if(splitedDate[0] > new Date().getFullYear()){
@@ -52,25 +63,22 @@ function validatingData(amount, date, category){
         }else{
             if(splitedDate[2] > new Date().getDate()){
                 return false;
-            }else{
-                validated = true;
             }
         }
     }
     // Valider Category
     if(category=="Select a category" || category==""){
         return false;
-    }else{validated = true;}
+    }
 
-    console.log(validated);
-
-// Select a category    
+    return true; 
 }
 function getData(){
     // prendre tous les inputs
     let inputs = document.getElementsByClassName("form-input");
     // Valider les données
-    validatingData(inputs[0].value, inputs[1].value, inputs[2].value);
+    let validate = validatingData(inputs[0].value, inputs[1].value, inputs[2].value);
+    console.log(validate)
 
     // Inserer tous les donées des inputs à une nouveau carte
     const card = {amount: inputs[0].value, date: inputs[1].value, category: inputs[2].value, description: inputs[3].value, type: type};
