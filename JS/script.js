@@ -43,8 +43,28 @@ function validatingData(amount, date, category){
     let validated = false;
     let splitedDate = split(date);
     
-    console.log(splitedDate);
-    
+    // Valider La Date
+    if(splitedDate[0] > new Date().getFullYear()){
+        return false;
+    }else{
+        if(splitedDate[1] > new Date().getMonth()+1){
+            return false;
+        }else{
+            if(splitedDate[2] > new Date().getDate()){
+                return false;
+            }else{
+                validated = true;
+            }
+        }
+    }
+    // Valider Category
+    if(category=="Select a category" || category==""){
+        return false;
+    }else{validated = true;}
+
+    console.log(validated);
+
+// Select a category    
 }
 function getData(){
     // prendre tous les inputs
