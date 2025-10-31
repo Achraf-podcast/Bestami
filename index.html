@@ -96,7 +96,7 @@
                 <div class="px-5 py-3 flex justify-between md:block gap-3">
                     <span class="font-semibold md:hidden text-gray-500">Actions:</span>
                     <div class="flex gap-3">
-                        <button class="text-blue-600 font-semibold">edit</button>
+                        <button class="text-blue-600 font-semibold edit-btn positive">edit</button>
                         <button class="text-red-600 font-semibold delete-btn positive">delete</button>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
                 <div class="px-5 py-3 flex justify-between md:block gap-3">
                     <span class="font-semibold md:hidden text-gray-500">Actions:</span>
                     <div class="flex gap-3">
-                        <button class="text-blue-600 font-semibold">edit</button>
+                        <button class="text-blue-600 font-semibold edit-btn negative">edit</button>
                         <button class="text-red-600 font-semibold delete-btn negative">delete</button>
                     </div>
                 </div>
@@ -209,9 +209,7 @@
                             <button
                                 class="flex h-12 items-center justify-center rounded-lg border border-slate-200 border-slate-700 px-6 text-sm font-semibold text-slate-700 text-slate-300 close-formulaire"
                                 type="button">Cancel</button>
-                            <button
-                                class="flex h-12 items-center justify-center gap-2 rounded-lg bg-blue-500 px-6 text-sm font-semibold text-white shadow-sm"
-                                type="button" id="submit">
+                            <button class="flex h-12 items-center justify-center gap-2 rounded-lg bg-blue-500 px-6 text-sm font-semibold text-white shadow-sm" type="button" id="submit">
                                 <span class="material-symbols-outlined text-xl" data-icon="save">save</span>
                                 <span>Save Transaction</span>
                             </button>
@@ -223,7 +221,7 @@
 
     </main>
     <div class="notification error" id="errorNotification">❌ Please enter valid informations!</div>
-    <div class="notification success" id="successNotification">✅ Your details are registred successfully</div>
+    <div class="notification success" id="successNotification"></div>
 
     <script src="JS/script.js"></script>
 </body>

@@ -2,10 +2,24 @@
 var type = true;
 var cards = JSON.parse(localStorage.getItem("cards"));
 var id = parseInt(JSON.parse(localStorage.getItem("id")));
-console.log(id);
+var ev;
 
 const errorNotification = document.getElementById('errorNotification');
 const successNotification = document.getElementById('successNotification');
+
+function displayPositiveNotification(msg){
+    successNotification.textContent = msg;
+    successNotification.style.display = 'block';
+    setTimeout(() => {
+        successNotification.style.display = 'none';
+    }, 2000);
+}
+function displayNegativeNotification(){
+    errorNotification.style.display = 'block';
+    setTimeout(() => {
+        errorNotification.style.display = 'none';
+    }, 2000);
+}
 
 // Mise à jour les totals
 function updateTotals(){
@@ -142,6 +156,44 @@ function stockData(amount, date, category, type, description){
     // Afficher La carte
     showNewCard(card.id, card.amount, card.date, card.category, card.type, card.description);
 }
+function editData(){
+    const carte = ev.target.closest('.card');
+    const classes = carte.classList;
+    const idToEdit = ev.target.classList.contains('positive') ? parseInt(classes.value.replace('grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-green-200 text-sm card positive-card id', '')) : parseInt(classes.value.replace('grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-red-200 text-sm card negative-card id', ''));
+
+    let inputs = document.getElementsByClassName("form-input");
+    let validate = validatingData(inputs[0].value, inputs[1].value, inputs[2].value)[0];
+    let updatedAmount = validatingData(inputs[0].value, inputs[1].value, inputs[2].value)[1];
+
+    if(validate){
+        console.log(cards);
+        for(let i=0; i<cards.length; i++){
+            if(cards[i].id === idToEdit){
+                cards[i].amount = updatedAmount;
+                cards[i].date = inputs[1].value;
+                cards[i].category = inputs[2].value;
+                cards[i].type = type ? "Income" : "Expense";
+                cards[i].description = inputs[3].value;
+
+                carte.remove();
+                submitBtn.removeEventListener("click", editData);
+                submitBtn.addEventListener("click", getData);
+                CloseFormulaire();
+                displayPositiveNotification("✅ Card edited successfully");
+                showNewCard(cards[i].id, cards[i].amount, cards[i].date, cards[i].category, cards[i].type, cards[i].description);
+                localStorage.setItem("cards", JSON.stringify(cards));
+                updateTotals();
+                break;
+            }
+        }
+        for(let i=0; i<inputs.length; i++){
+            inputs[i].value = "";
+        }
+    }else{
+        displayNegativeNotification();
+    }
+   
+}
 function getData(){
     // prendre tous les inputs
     let inputs = document.getElementsByClassName("form-input");
@@ -151,17 +203,11 @@ function getData(){
 
     // Afficher notification à l'utilisatuer selon les données entrées
     if(validate){
-        stockData(updatedAmount, inputs[1].value, inputs[2].value, type, inputs[3].value)
-        updateTotals()
-        successNotification.style.display = 'block';
-        setTimeout(() => {
-          successNotification.style.display = 'none';
-        }, 2000);
+        stockData(updatedAmount, inputs[1].value, inputs[2].value, type, inputs[3].value);
+        updateTotals();
+        displayPositiveNotification("✅ Your details are registred successfully");
     }else{
-        errorNotification.style.display = 'block';
-        setTimeout(() => {
-          errorNotification.style.display = 'none';
-        }, 2000);
+        displayNegativeNotification();
     }
     
     for(let i=0; i<inputs.length; i++){
@@ -198,6 +244,8 @@ try{
 
 updateTotals()
 
+
+// Supprimer Ou Modifier une carte
 document.getElementById("cards-container").addEventListener("click", (e) => {
   if (e.target.classList.contains('delete-btn')) {
     const carte = e.target.closest('.card');
@@ -213,7 +261,14 @@ document.getElementById("cards-container").addEventListener("click", (e) => {
         }
         localStorage.setItem("cards", JSON.stringify(cards));
         carte.remove();
+        displayPositiveNotification("✅ Your card deleted successfully");
         updateTotals();
     }
+  }else if(e.target.classList.contains('edit-btn')){
+    ev = e;
+    submitBtn.removeEventListener("click", getData);
+    displayTransactionFormulaire();
+    submitBtn.addEventListener("click", editData);
+    
   }
 });
