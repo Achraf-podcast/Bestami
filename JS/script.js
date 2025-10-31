@@ -1,7 +1,8 @@
 // Declarer les variables globals
 var type = true;
 var cards = JSON.parse(localStorage.getItem("cards"));
-try{var id = cards.length;}catch(er){var id = 0;}
+var id = parseInt(JSON.parse(localStorage.getItem("id")));
+console.log(id);
 
 const errorNotification = document.getElementById('errorNotification');
 const successNotification = document.getElementById('successNotification');
@@ -109,7 +110,7 @@ function validatingData(amount, date, category){
 }
 
 // Afficher une nouvelle carte avec les paramètres donées
-function showNewCard(amount, date, category, type, description){
+function showNewCard(id, amount, date, category, type, description){
     const original = type == "Income" ? document.querySelector('.positive-card') : document.querySelector('.negative-card');
     const container = document.getElementById('cards-container');
     const newCard = original.cloneNode(true);
@@ -137,8 +138,9 @@ function stockData(amount, date, category, type, description){
     id++;
     // Mise à jour des données dans LocalStorage
     localStorage.setItem("cards", JSON.stringify(cards));
+    localStorage.setItem("id", id);
     // Afficher La carte
-    showNewCard(card.amount, card.date, card.category, card.type, card.description);
+    showNewCard(card.id, card.amount, card.date, card.category, card.type, card.description);
 }
 function getData(){
     // prendre tous les inputs
@@ -188,10 +190,30 @@ income();
 // Afficher tous les cartes déja stockée quand tu ouvre le siteweb
 try{
     for(let i=0; i<cards.length; i++){
-        showNewCard(cards[i].amount, cards[i].date, cards[i].category, cards[i].type, cards[i].description);
+        showNewCard(cards[i].id, cards[i].amount, cards[i].date, cards[i].category, cards[i].type, cards[i].description);
     }
 }catch(er){
     console.log();
 }
 
 updateTotals()
+
+document.getElementById("cards-container").addEventListener("click", (e) => {
+  if (e.target.classList.contains('delete-btn')) {
+    const carte = e.target.closest('.card');
+    const classes = carte.classList;
+    const confirmation = confirm("Are you sure you want to delete this card ?");
+    if(confirmation){
+        const idToRemove = e.target.classList.contains('positive') ? parseInt(classes.value.replace('grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-green-200 text-sm card positive-card id', '')) : parseInt(classes.value.replace('grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-red-200 text-sm card negative-card id', ''));
+        for(let i=0; i<cards.length; i++){
+            if(cards[i].id === idToRemove){
+                cards.splice(i, 1);
+                break;
+            }
+        }
+        localStorage.setItem("cards", JSON.stringify(cards));
+        carte.remove();
+        updateTotals();
+    }
+  }
+});
