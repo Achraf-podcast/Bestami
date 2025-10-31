@@ -4,6 +4,8 @@ var cards = JSON.parse(localStorage.getItem("cards"));
 var id = parseInt(JSON.parse(localStorage.getItem("id")));
 var ev;
 
+if(cards == null){id = 0;}
+
 const errorNotification = document.getElementById('errorNotification');
 const successNotification = document.getElementById('successNotification');
 
