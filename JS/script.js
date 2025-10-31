@@ -1,6 +1,8 @@
 // Declarer les variables
 var type = true;
 var cards = []
+const errorNotification = document.getElementById('errorNotification');
+const successNotification = document.getElementById('successNotification');
 
 // Afficher le formulaire
 function displayTransactionFormulaire(){
@@ -55,14 +57,18 @@ function validatingData(amount, date, category){
     }
     
     // Valider La Date
-    if(splitedDate[0] > new Date().getFullYear()){
+    if(date == ""){
         return false;
     }else{
-        if(splitedDate[1] > new Date().getMonth()+1){
+        if(splitedDate[0] > new Date().getFullYear()){
             return false;
         }else{
-            if(splitedDate[2] > new Date().getDate()){
+            if(splitedDate[1] > new Date().getMonth()+1){
                 return false;
+            }else{
+                if(splitedDate[2] > new Date().getDate()){
+                    return false;
+                }
             }
         }
     }
@@ -78,12 +84,20 @@ function getData(){
     let inputs = document.getElementsByClassName("form-input");
     // Valider les données
     let validate = validatingData(inputs[0].value, inputs[1].value, inputs[2].value);
-    console.log(validate)
 
-    // Inserer tous les donées des inputs à une nouveau carte
-    const card = {amount: inputs[0].value, date: inputs[1].value, category: inputs[2].value, description: inputs[3].value, type: type};
-    // Ajouter la carte à notre tableau des autres cartes
-    cards[cards.length] = card;
+    // Afficher notification à l'utilisatuer selon les données entrées
+    if(validate){
+        successNotification.style.display = 'block';
+        setTimeout(() => {
+          successNotification.style.display = 'none';
+        }, 2000);
+    }else{
+        errorNotification.style.display = 'block';
+        setTimeout(() => {
+          errorNotification.style.display = 'none';
+        }, 2000);
+    }
+    
 
     for(let i=0; i<inputs.length; i++){
         inputs[i].value = "";
