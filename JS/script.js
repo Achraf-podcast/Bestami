@@ -1,11 +1,36 @@
-// Declarer les variables
+// Declarer les variables globals
 var type = true;
 var cards = JSON.parse(localStorage.getItem("cards"));
 try{var id = cards.length;}catch(er){var id = 0;}
-console.log(id);
+
 const errorNotification = document.getElementById('errorNotification');
 const successNotification = document.getElementById('successNotification');
 
+// Mise à jour les totals
+function updateTotals(){
+    let totalIncome = 0;
+    let totalExpense = 0;
+    let sold = 0;
+    try{
+        for(let i=0; i<cards.length; i++){
+            totalIncome = parseInt(cards[i].amount)>0 ? totalIncome+parseInt(cards[i].amount) : totalIncome;
+        }
+    }catch(er){console.log()}
+    try{
+        for(let i=0; i<cards.length; i++){
+            totalExpense = parseInt(cards[i].amount)<0 ? totalExpense+parseInt(cards[i].amount) : totalExpense;
+        }
+    }catch(er){console.log()}
+    sold = totalExpense+totalIncome;
+
+    const totalIncomeHtml = document.getElementById('totalIncome');
+    const totalExpenseHtml = document.getElementById('totalExpense');
+    const soldHtml = document.getElementById('sold');
+
+    totalIncomeHtml.textContent = totalIncome;
+    totalExpenseHtml.textContent = totalExpense;
+    soldHtml.textContent = sold;
+}
 // Afficher le formulaire
 function displayTransactionFormulaire(){
     let formulaire = document.getElementsByClassName("formulaire");
@@ -89,19 +114,20 @@ function showNewCard(amount, date, category, type, description){
     const container = document.getElementById('cards-container');
     const newCard = original.cloneNode(true);
 
-    newCard.classList.remove('hidden')
+    newCard.classList.remove('hidden');
+    newCard.classList.add("id"+id);
     const spans = newCard.querySelectorAll('span');
     spans[1].textContent = date;
     spans[3].textContent = description;
     spans[5].textContent = category;
     spans[7].textContent = type;
-    spans[9].textContent = amount;
+    spans[9].textContent = amount+"$";
 
     container.appendChild(newCard);
 }
 
 function stockData(amount, date, category, type, description){
-    const card = type ? {id:id, amount: "+"+amount+"$", date: date, category: category, type: "Income", description: description} : {id:id, amount: amount+"$", date: date, category: category, type: "Expense", description: description};
+    const card = type ? {id:id, amount: amount, date: date, category: category, type: "Income", description: description} : {id:id, amount: amount, date: date, category: category, type: "Expense", description: description};
     // Ajouter la carte à notre tableau des autres cartes
     try{
         cards[cards.length] = card;
@@ -124,6 +150,7 @@ function getData(){
     // Afficher notification à l'utilisatuer selon les données entrées
     if(validate){
         stockData(updatedAmount, inputs[1].value, inputs[2].value, type, inputs[3].value)
+        updateTotals()
         successNotification.style.display = 'block';
         setTimeout(() => {
           successNotification.style.display = 'none';
@@ -166,3 +193,5 @@ try{
 }catch(er){
     console.log();
 }
+
+updateTotals()

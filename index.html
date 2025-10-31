@@ -37,6 +37,23 @@
     </header>
 
     <main class="main">
+        <div class="p-4 md:p-6 flex flex-col gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="flex flex-col gap-2 rounded-xl p-3 bg-green-200 border border-green-200">
+                    <p class="text-green-700 text-base leading-normal">Total Income</p>
+                    <p class="text-black text-1xl font-bold leading-tight" id="totalIncome">$0</p>
+                </div>
+                <div class="flex flex-col gap-2 rounded-xl p-3 bg-red-200 border border-green-200">
+                    <p class="text-red-700 text-base leading-normal">Total Expense</p>
+                    <p class="text-black text-1xl font-bold leading-tight" id="totalExpense">$0</p>
+                </div>
+                <div class="flex flex-col gap-2 rounded-xl p-3 bg-gray-200 border border-green-200">
+                    <p class="text-gray-700 text-base leading-normal">Sold</p>
+                    <p class="text-black text-1xl font-bold leading-tight" id="sold">$0</p>
+                </div>
+            </div>
+        </div>
+
         <div class="top-bar">
             <h1>Transaction History</h1>
             <button class="btn-primary" id="addNewTransaction">
@@ -55,7 +72,8 @@
                 <div class="px-8">Actions</div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-green-200 text-sm hidden positive-card">
+            <div
+                class="grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-green-200 text-sm hidden positive-card">
                 <div class="px-5 py-3 flex justify-between md:block">
                     <span class="font-semibold md:hidden text-gray-500">Date:</span>
                     <span>Oct 26, 2023</span>
@@ -87,7 +105,8 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-red-200 text-sm hidden negative-card">
+            <div
+                class="grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-red-200 text-sm hidden negative-card">
                 <div class="px-5 py-3 flex justify-between md:block">
                     <span class="font-semibold md:hidden text-gray-500">Date:</span>
                     <span></span>
@@ -121,24 +140,34 @@
 
         <div class="min-h-screen w-full flex-col items-center justify-center p-4 sm:p-6 formulaire">
             <div class="w-full max-w-2xl">
-                <div class="relative rounded-xl border border-slate-200/80 border-slate-800 bg-white bg-slate-900 shadow-lg">
-                    <button class="absolute top-4 right-4 text-slate-500 text-slate-400 hover:text-slate-800 hover:text-slate-200 transition-colors" type="button">
+                <div
+                    class="relative rounded-xl border border-slate-200/80 border-slate-800 bg-white bg-slate-900 shadow-lg">
+                    <button
+                        class="absolute top-4 right-4 text-slate-500 text-slate-400 hover:text-slate-800 hover:text-slate-200 transition-colors"
+                        type="button">
                         <span class="material-symbols-outlined close-formulaire" data-icon="close">close</span>
                     </button>
                     <div class="flex flex-col gap-6 p-6 sm:p-7">
                         <div class="flex flex-col gap-2">
                             <h1 class="text-3xl font-bold text-slate-900 text-black tracking-tight">New Transaction</h1>
-                            <p class="text-slate-500 text-slate-400 text-sm">Enter the details below to add a new transaction.</p>
+                            <p class="text-slate-500 text-slate-400 text-sm">Enter the details below to add a new
+                                transaction.</p>
                         </div>
                         <div class="flex flex-col gap-6">
                             <div>
-                                <h2 class="text-slate-800 text-slate-200 text-base font-semibold leading-tight tracking-[-0.015em] pb-3">Transaction Type</h2>
+                                <h2
+                                    class="text-slate-800 text-slate-200 text-base font-semibold leading-tight tracking-[-0.015em] pb-3">
+                                    Transaction Type</h2>
                                 <div class="flex h-12 flex-1 items-center justify-center rounded-lg bg-slate-200 p-1">
-                                    <button class="flex cursor-pointer h-full grow items-center justify-center gap-2 text-gray-500" id="income-btn">
+                                    <button
+                                        class="flex cursor-pointer h-full grow items-center justify-center gap-2 text-gray-500"
+                                        id="income-btn">
                                         <span class="material-symbols-outlined text-xl">add</span>
                                         <span class="truncate">Income</span>
                                     </button>
-                                    <button class="flex cursor-pointer h-full grow items-center justify-center gap-2 text-gray-500" id="expense-btn">
+                                    <button
+                                        class="flex cursor-pointer h-full grow items-center justify-center gap-2 text-gray-500"
+                                        id="expense-btn">
                                         <span class="material-symbols-outlined text-xl">remove</span>
                                         <span class="truncate">Expense</span>
                                     </button>
@@ -149,7 +178,8 @@
                                     <p class="text-slate-800 text-slate-200 text-sm font-medium leading-normal">
                                         Amount</p>
                                     <div class="relative">
-                                        <input class="form-input w-full h-12 text-base" placeholder="$0.00" type="number" value="">
+                                        <input class="form-input w-full h-12 text-base" placeholder="$0.00"
+                                            type="number" value="">
                                     </div>
                                 </div>
                                 <div class="flex flex-col gap-2">
@@ -173,13 +203,19 @@
                                 </select>
                             </div>
                             <div class="flex flex-col gap-2">
-                                <p class="text-slate-800 text-slate-200 text-sm font-medium leading-normal">Description (optional)</p>
-                                <input class="form-input h-12 text-base" placeholder="e.g., Weekly grocery run" value="">
+                                <p class="text-slate-800 text-slate-200 text-sm font-medium leading-normal">Description
+                                    (optional)</p>
+                                <input class="form-input h-12 text-base" placeholder="e.g., Weekly grocery run"
+                                    value="">
                             </div>
                         </div>
                         <div class="flex flex-col-reverse gap-3 pt-4 sm:flex-row sm:justify-end">
-                            <button class="flex h-12 items-center justify-center rounded-lg border border-slate-200 border-slate-700 px-6 text-sm font-semibold text-slate-700 text-slate-300 close-formulaire" type="button">Cancel</button>
-                            <button class="flex h-12 items-center justify-center gap-2 rounded-lg bg-blue-500 px-6 text-sm font-semibold text-white shadow-sm" type="button" id="submit">
+                            <button
+                                class="flex h-12 items-center justify-center rounded-lg border border-slate-200 border-slate-700 px-6 text-sm font-semibold text-slate-700 text-slate-300 close-formulaire"
+                                type="button">Cancel</button>
+                            <button
+                                class="flex h-12 items-center justify-center gap-2 rounded-lg bg-blue-500 px-6 text-sm font-semibold text-white shadow-sm"
+                                type="button" id="submit">
                                 <span class="material-symbols-outlined text-xl" data-icon="save">save</span>
                                 <span>Save Transaction</span>
                             </button>
