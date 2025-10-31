@@ -1,6 +1,8 @@
 // Declarer les variables
 var type = true;
 var cards = JSON.parse(localStorage.getItem("cards"));
+try{var id = cards.length;}catch(er){var id = 0;}
+console.log(id);
 const errorNotification = document.getElementById('errorNotification');
 const successNotification = document.getElementById('successNotification');
 
@@ -99,9 +101,14 @@ function showNewCard(amount, date, category, type, description){
 }
 
 function stockData(amount, date, category, type, description){
-    const card = type ? {amount: "+"+amount+"$", date: date, category: category, type: "Income", description: description} : {amount: amount+"$", date: date, category: category, type: "Expense", description: description};
+    const card = type ? {id:id, amount: "+"+amount+"$", date: date, category: category, type: "Income", description: description} : {id:id, amount: amount+"$", date: date, category: category, type: "Expense", description: description};
     // Ajouter la carte à notre tableau des autres cartes
-    cards[cards.length] = card;
+    try{
+        cards[cards.length] = card;
+    }catch(er){
+        cards = [card];
+    }
+    id++;
     // Mise à jour des données dans LocalStorage
     localStorage.setItem("cards", JSON.stringify(cards));
     // Afficher La carte
@@ -152,6 +159,10 @@ submitBtn.addEventListener("click", getData);
 // Rendre le type à Income par défaut
 income();
 // Afficher tous les cartes déja stockée quand tu ouvre le siteweb
-for(let i=0; i<cards.length; i++){
-    showNewCard(cards[i].amount, cards[i].date, cards[i].category, cards[i].type, cards[i].description);
+try{
+    for(let i=0; i<cards.length; i++){
+        showNewCard(cards[i].amount, cards[i].date, cards[i].category, cards[i].type, cards[i].description);
+    }
+}catch(er){
+    console.log();
 }
