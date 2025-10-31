@@ -45,7 +45,7 @@
             </button>
         </div>
 
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden" id="cards-container">
             <div class="hidden md:grid grid-cols-6 bg-gray-50 text-gray-800 uppercase text-xs font-semibold px-5 py-3">
                 <div>Date</div>
                 <div class="px-2">Description</div>
@@ -55,7 +55,7 @@
                 <div class="px-8">Actions</div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-green-200 text-sm">
+            <div class="grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-green-200 text-sm hidden positive-card">
                 <div class="px-5 py-3 flex justify-between md:block">
                     <span class="font-semibold md:hidden text-gray-500">Date:</span>
                     <span>Oct 26, 2023</span>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="px-5 py-3 flex justify-between md:block">
                     <span class="font-semibold md:hidden text-gray-500">Category:</span>
-                    <span>Income</span>
+                    <span>Salary</span>
                 </div>
                 <div class="px-5 py-3 flex justify-between md:block">
                     <span class="font-semibold md:hidden text-gray-500">Type:</span>
@@ -87,28 +87,27 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-red-200 text-sm">
+            <div class="grid grid-cols-1 md:grid-cols-6 border-t border-gray-200 bg-red-200 text-sm hidden negative-card">
                 <div class="px-5 py-3 flex justify-between md:block">
                     <span class="font-semibold md:hidden text-gray-500">Date:</span>
-                    <span>Oct 25, 2023</span>
+                    <span></span>
                 </div>
                 <div class="px-5 py-3 flex justify-between md:block">
                     <span class="font-semibold md:hidden text-gray-500">Description:</span>
-                    <span>Groceries from SuperMart</span>
+                    <span></span>
                 </div>
                 <div class="px-5 py-3 flex justify-between md:block">
                     <span class="font-semibold md:hidden text-gray-500">Category:</span>
-                    <span>Food & Drink</span>
+                    <span></span>
                 </div>
                 <div class="px-5 py-3 flex justify-between md:block">
                     <span class="font-semibold md:hidden text-gray-500">Type:</span>
                     <span class="px-2 py-1 rounded-full text-xs font-semibold text-red-800 bg-red-200">
-                        Expense
                     </span>
                 </div>
                 <div class="px-5 py-3 flex justify-between md:block">
                     <span class="font-semibold md:hidden text-gray-500">Amount:</span>
-                    <span class="text-red-600 font-semibold">-$85.50</span>
+                    <span class="text-red-600 font-semibold"></span>
                 </div>
                 <div class="px-5 py-3 flex justify-between md:block gap-3">
                     <span class="font-semibold md:hidden text-gray-500">Actions:</span>

@@ -34,6 +34,7 @@ function expense(){
     expenseBtn.classList.add("transition-all");
 }
 
+// split la date from 2025-10-31 to year:2025 | month:10 | day:31
 function split(date){
     let year = parseInt(date[0]+date[1]+date[2]+date[3]);
     let month = parseInt(date[5]+date[6]);
@@ -46,7 +47,7 @@ function validatingData(amount, date, category){
     let updatedAmount;
     
     // Valider Amount
-    if(amount == ""){
+    if(amount == "" || amount == 0){
         return false;
     }else{
         if(type){
@@ -77,16 +78,43 @@ function validatingData(amount, date, category){
         return false;
     }
 
-    return true; 
+    return [true, updatedAmount]; 
+}
+
+// Afficher une nouvelle carte avec les paramètres donées
+function showNewCard(amount, date, category, type, description){
+    const original = type == "Income" ? document.querySelector('.positive-card') : document.querySelector('.negative-card');
+    const container = document.getElementById('cards-container');
+    const newCard = original.cloneNode(true);
+
+    newCard.classList.remove('hidden')
+    const spans = newCard.querySelectorAll('span');
+    spans[1].textContent = date;
+    spans[3].textContent = description;
+    spans[5].textContent = category;
+    spans[7].textContent = type;
+    spans[9].textContent = amount;
+
+    container.appendChild(newCard);
+}
+
+function stockData(amount, date, category, type, description){
+    const card = type ? {amount: "+"+amount+"$", date: date, category: category, type: "Income", description: description} : {amount: amount+"$", date: date, category: category, type: "Expense", description: description};
+    // Ajouter la carte à notre tableau des autres cartes
+    cards[cards.length] = card;
+    // Afficher La carte
+    showNewCard(card.amount, card.date, card.category, card.type, card.description);
 }
 function getData(){
     // prendre tous les inputs
     let inputs = document.getElementsByClassName("form-input");
     // Valider les données
-    let validate = validatingData(inputs[0].value, inputs[1].value, inputs[2].value);
+    let validate = validatingData(inputs[0].value, inputs[1].value, inputs[2].value)[0];
+    let updatedAmount = validatingData(inputs[0].value, inputs[1].value, inputs[2].value)[1];
 
     // Afficher notification à l'utilisatuer selon les données entrées
     if(validate){
+        stockData(updatedAmount, inputs[1].value, inputs[2].value, type, inputs[3].value)
         successNotification.style.display = 'block';
         setTimeout(() => {
           successNotification.style.display = 'none';
@@ -98,7 +126,6 @@ function getData(){
         }, 2000);
     }
     
-
     for(let i=0; i<inputs.length; i++){
         inputs[i].value = "";
     }
