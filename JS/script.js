@@ -1,6 +1,6 @@
 // Declarer les variables
 var type = true;
-var cards = []
+var cards = JSON.parse(localStorage.getItem("cards"));
 const errorNotification = document.getElementById('errorNotification');
 const successNotification = document.getElementById('successNotification');
 
@@ -151,3 +151,7 @@ submitBtn.addEventListener("click", getData);
 
 // Rendre le type à Income par défaut
 income();
+// Afficher tous les cartes déja stockée quand tu ouvre le siteweb
+for(let i=0; i<cards.length; i++){
+    showNewCard(cards[i].amount, cards[i].date, cards[i].category, cards[i].type, cards[i].description);
+}
