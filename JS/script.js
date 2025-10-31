@@ -102,6 +102,8 @@ function stockData(amount, date, category, type, description){
     const card = type ? {amount: "+"+amount+"$", date: date, category: category, type: "Income", description: description} : {amount: amount+"$", date: date, category: category, type: "Expense", description: description};
     // Ajouter la carte à notre tableau des autres cartes
     cards[cards.length] = card;
+    // Mise à jour des données dans LocalStorage
+    localStorage.setItem("cards", JSON.stringify(cards));
     // Afficher La carte
     showNewCard(card.amount, card.date, card.category, card.type, card.description);
 }
