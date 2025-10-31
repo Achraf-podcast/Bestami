@@ -1,10 +1,10 @@
 // Declarer les variables globals
 var type = true;
 var cards = JSON.parse(localStorage.getItem("cards"));
-var id = parseInt(JSON.parse(localStorage.getItem("id")));
+var id;
 var ev;
 
-if(cards == null){id = 0;}
+if(cards == null){id = 0;}else{id = parseInt(JSON.parse(localStorage.getItem("id")));}
 
 const errorNotification = document.getElementById('errorNotification');
 const successNotification = document.getElementById('successNotification');
