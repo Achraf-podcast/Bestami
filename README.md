@@ -1,3 +1,4 @@
+public version:  https://bestami-website.vercel.app/
 # 💰 Baztami
 
 **Baztami** is a simple and intuitive **web application** that helps users **add, track, and organize** their **income and expenses**, providing a quick and clear view of their **current balance**.
